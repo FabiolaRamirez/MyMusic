@@ -11,10 +11,8 @@ import UIKit
 class PlayListCell: UITableViewCell {
     
     
-    
     @IBOutlet weak var songLabel: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
-    @IBOutlet weak var artistImageView: UIImageView!
     
     
     override func awakeFromNib() {

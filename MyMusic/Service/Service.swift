@@ -131,10 +131,10 @@ class Service {
             if error == nil {
                 success(data!)
             } else {
-                print("Error: \(error)")
+                print("Error: \(String(describing: error))")
             }
             
-        }
+            }
             .resume()
     }
     

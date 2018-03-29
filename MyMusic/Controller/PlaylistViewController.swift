@@ -11,27 +11,26 @@ import UIKit
 class PlaylistViewController: UIViewController {
     
     let searchController = UISearchController(searchResultsController: nil)
+    var data = [Song]()
     var activityIndicator = UIActivityIndicatorView()
     var songList : [Song] = []
     var filteredList: [Song] = []
-    var selectedSong: Song?
     
+    var selectedSong: Song?
     @IBOutlet weak var tableView: UITableView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         settingUI()
         settingUIActivityI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
-      getSongs()
-        
+        getSongs()
     }
-
     
     func searchBySong(songName: String) {
         self.settingUI(true)
@@ -42,6 +41,7 @@ class PlaylistViewController: UIViewController {
                     print("No Results Found")
                 } else {
                     self.filteredList = songList
+                    self.data = self.filteredList
                     self.tableView.reloadData()
                 }
             }
@@ -57,9 +57,10 @@ class PlaylistViewController: UIViewController {
         self.settingUI(true)
         Service.getSongs(success: {(songList: [Song]) in
             DispatchQueue.main.async {
-             self.settingUI(false)
-             self.songList = songList
-             self.tableView.reloadData()
+                self.settingUI(false)
+                self.songList = songList
+                self.data = self.songList
+                self.tableView.reloadData()
             }
         }, failure: {(error) in
             DispatchQueue.main.async {
@@ -71,7 +72,6 @@ class PlaylistViewController: UIViewController {
     
     
     func  settingUI() {
-        
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
             self.navigationController?.navigationItem.largeTitleDisplayMode = .never
@@ -89,7 +89,9 @@ class PlaylistViewController: UIViewController {
         }
         definesPresentationContext = true
         searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Search By Song"
     }
+    
     
     func settingUIActivityI() {
         activityIndicator.center = self.view.center
@@ -97,12 +99,14 @@ class PlaylistViewController: UIViewController {
         activityIndicator.color = UIColor.darkGray
     }
     
+    
     func filterContentForSearchText(searchText: String){
         if searchText.count >= 3 {
             let escapedString = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
             searchBySong(songName: escapedString!)
         }
     }
+    
     
     func searchBarIsEmpty() -> Bool {
         return searchController.searchBar.text?.isEmpty ?? true
@@ -113,12 +117,18 @@ class PlaylistViewController: UIViewController {
         return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetailCV" {
             let destination = segue.destination as! DetailViewController
             destination.song = self.selectedSong
             
         }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.data = self.songList
+        self.tableView.reloadData()
     }
     
 }
@@ -154,7 +164,7 @@ extension PlaylistViewController: UITableViewDelegate,UITableViewDataSource {
         if isFiltering() {
             return filteredList.count
         }
-        return songList.count
+        return data.count
         
     }
     
@@ -169,17 +179,10 @@ extension PlaylistViewController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "playListCell", for: indexPath) as! PlayListCell
-    
-        if isFiltering() {
-            let song: Song = filteredList[indexPath.row]
-            cell.songLabel.text = song.trackName
-            cell.artistNameLabel.text = song.artistName
-        } else {
-            let song: Song = songList[indexPath.row]
-            cell.songLabel.text = song.trackName
-            cell.artistNameLabel.text = song.artistName
-        }
-        
+        let song: Song = data[indexPath.row]
+        cell.songLabel.text = song.trackName
+        cell.artistNameLabel.text = song.artistName
+
         return cell
         
     }
@@ -187,11 +190,7 @@ extension PlaylistViewController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if isFiltering() {
-             selectedSong = filteredList[indexPath.row]
-        } else {
-             selectedSong = songList[indexPath.row]
-        }
+        selectedSong = data[indexPath.row]
         performSegue(withIdentifier: "showDetailCV", sender: nil)
     }
     

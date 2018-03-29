@@ -17,6 +17,13 @@
 		208B6822206B16BF009114DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 208B6821206B16BF009114DB /* Assets.xcassets */; };
 		208B6825206B16BF009114DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 208B6823206B16BF009114DB /* LaunchScreen.storyboard */; };
 		20A6246D206B1EB20094EC47 /* PlayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A6246C206B1EB20094EC47 /* PlayListCell.swift */; };
+		9AFEBF6C206D37EE009ECF96 /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFEBF6B206D37EE009ECF96 /* FavoriteTableViewController.swift */; };
+		9AFEBF6D206D480D009ECF96 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFEBF6E206D480D009ECF96 /* RealmSwift.framework */; };
+		9AFEBF6F206D4814009ECF96 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFEBF70206D4814009ECF96 /* Realm.framework */; };
+		9AFEBF72206D6555009ECF96 /* SongR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFEBF71206D6555009ECF96 /* SongR.swift */; };
+		9AFEBF75206D68F6009ECF96 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFEBF74206D68F6009ECF96 /* Database.swift */; };
+		9AFEBF77206D7616009ECF96 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFEBF76206D7616009ECF96 /* FavoriteCell.swift */; };
+		FAA50B4CFCB5FB916884ACDE /* Pods_MyMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7436FF6CC0E228B862CD2C9 /* Pods_MyMusic.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +39,15 @@
 		208B6824206B16BF009114DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		208B6826206B16BF009114DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20A6246C206B1EB20094EC47 /* PlayListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListCell.swift; sourceTree = "<group>"; };
+		63B5539242060B1F5471FCC0 /* Pods-MyMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMusic.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyMusic/Pods-MyMusic.release.xcconfig"; sourceTree = "<group>"; };
+		9AFEBF6B206D37EE009ECF96 /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
+		9AFEBF6E206D480D009ECF96 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AFEBF70206D4814009ECF96 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AFEBF71206D6555009ECF96 /* SongR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongR.swift; sourceTree = "<group>"; };
+		9AFEBF74206D68F6009ECF96 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		9AFEBF76206D7616009ECF96 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
+		A7436FF6CC0E228B862CD2C9 /* Pods_MyMusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyMusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFF9CF2EC4F087CD8D6AE89E /* Pods-MyMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMusic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyMusic/Pods-MyMusic.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +55,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AFEBF6F206D4814009ECF96 /* Realm.framework in Frameworks */,
+				9AFEBF6D206D480D009ECF96 /* RealmSwift.framework in Frameworks */,
+				FAA50B4CFCB5FB916884ACDE /* Pods_MyMusic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +85,8 @@
 			children = (
 				208B6819206B16BF009114DB /* MyMusic */,
 				208B6818206B16BF009114DB /* Products */,
+				EC01C97952850887A2FA2333 /* Pods */,
+				74811893EE9D9CE9B6C8DBB9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,19 +101,66 @@
 		208B6819206B16BF009114DB /* MyMusic */ = {
 			isa = PBXGroup;
 			children = (
+				9AFEBF73206D68A1009ECF96 /* DataBase */,
+				9AFEBF6A206D3752009ECF96 /* Controller */,
 				20801823206B349F0079EF5A /* Model */,
 				2080181D206B2A7C0079EF5A /* Service */,
 				208B681A206B16BF009114DB /* AppDelegate.swift */,
-				208B681C206B16BF009114DB /* PlaylistViewController.swift */,
-				204C66D8206C8E1F00EBB2A8 /* DetailViewController.swift */,
+				20801820206B2DE40079EF5A /* ErrorResponse.swift */,
 				208B681E206B16BF009114DB /* Main.storyboard */,
 				208B6821206B16BF009114DB /* Assets.xcassets */,
 				208B6823206B16BF009114DB /* LaunchScreen.storyboard */,
 				208B6826206B16BF009114DB /* Info.plist */,
-				20A6246C206B1EB20094EC47 /* PlayListCell.swift */,
-				20801820206B2DE40079EF5A /* ErrorResponse.swift */,
 			);
 			path = MyMusic;
+			sourceTree = "<group>";
+		};
+		74811893EE9D9CE9B6C8DBB9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9AFEBF70206D4814009ECF96 /* Realm.framework */,
+				9AFEBF6E206D480D009ECF96 /* RealmSwift.framework */,
+				A7436FF6CC0E228B862CD2C9 /* Pods_MyMusic.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9AFEBF6A206D3752009ECF96 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9AFEBF78206D98FF009ECF96 /* Cell */,
+				208B681C206B16BF009114DB /* PlaylistViewController.swift */,
+				204C66D8206C8E1F00EBB2A8 /* DetailViewController.swift */,
+				9AFEBF6B206D37EE009ECF96 /* FavoriteTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9AFEBF73206D68A1009ECF96 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				9AFEBF71206D6555009ECF96 /* SongR.swift */,
+				9AFEBF74206D68F6009ECF96 /* Database.swift */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		9AFEBF78206D98FF009ECF96 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				20A6246C206B1EB20094EC47 /* PlayListCell.swift */,
+				9AFEBF76206D7616009ECF96 /* FavoriteCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		EC01C97952850887A2FA2333 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FFF9CF2EC4F087CD8D6AE89E /* Pods-MyMusic.debug.xcconfig */,
+				63B5539242060B1F5471FCC0 /* Pods-MyMusic.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,9 +170,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 208B6829206B16BF009114DB /* Build configuration list for PBXNativeTarget "MyMusic" */;
 			buildPhases = (
+				F95E42F5DCACC21FF139609D /* [CP] Check Pods Manifest.lock */,
 				208B6813206B16BF009114DB /* Sources */,
 				208B6814206B16BF009114DB /* Frameworks */,
 				208B6815206B16BF009114DB /* Resources */,
+				6769181322D510BBCEB6DD0B /* [CP] Embed Pods Frameworks */,
+				CE363F43CE4C84380E9DF976 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -162,14 +233,74 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6769181322D510BBCEB6DD0B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MyMusic/Pods-MyMusic-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyMusic/Pods-MyMusic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE363F43CE4C84380E9DF976 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyMusic/Pods-MyMusic-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F95E42F5DCACC21FF139609D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyMusic-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		208B6813206B16BF009114DB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AFEBF75206D68F6009ECF96 /* Database.swift in Sources */,
 				20801825206B34B50079EF5A /* Song.swift in Sources */,
+				9AFEBF6C206D37EE009ECF96 /* FavoriteTableViewController.swift in Sources */,
 				20801821206B2DE40079EF5A /* ErrorResponse.swift in Sources */,
 				208B681D206B16BF009114DB /* PlaylistViewController.swift in Sources */,
+				9AFEBF77206D7616009ECF96 /* FavoriteCell.swift in Sources */,
+				9AFEBF72206D6555009ECF96 /* SongR.swift in Sources */,
 				2080181F206B2AC60079EF5A /* Service.swift in Sources */,
 				208B681B206B16BF009114DB /* AppDelegate.swift in Sources */,
 				20A6246D206B1EB20094EC47 /* PlayListCell.swift in Sources */,
@@ -308,13 +439,15 @@
 		};
 		208B682A206B16BF009114DB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFF9CF2EC4F087CD8D6AE89E /* Pods-MyMusic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BR26Z7K4HT;
 				INFOPLIST_FILE = MyMusic/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fabiolaramirez.MyMusic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fabiolaramirez.MyMusic1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -323,13 +456,15 @@
 		};
 		208B682B206B16BF009114DB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63B5539242060B1F5471FCC0 /* Pods-MyMusic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BR26Z7K4HT;
 				INFOPLIST_FILE = MyMusic/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fabiolaramirez.MyMusic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fabiolaramirez.MyMusic1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
