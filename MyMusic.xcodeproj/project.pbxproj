@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		204C66D9206C8E1F00EBB2A8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204C66D8206C8E1F00EBB2A8 /* DetailViewController.swift */; };
 		2080181F206B2AC60079EF5A /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2080181E206B2AC60079EF5A /* Service.swift */; };
 		20801821206B2DE40079EF5A /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20801820206B2DE40079EF5A /* ErrorResponse.swift */; };
 		20801825206B34B50079EF5A /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20801824206B34B50079EF5A /* Song.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		204C66D8206C8E1F00EBB2A8 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2080181E206B2AC60079EF5A /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		20801820206B2DE40079EF5A /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		20801824206B34B50079EF5A /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				2080181D206B2A7C0079EF5A /* Service */,
 				208B681A206B16BF009114DB /* AppDelegate.swift */,
 				208B681C206B16BF009114DB /* PlaylistViewController.swift */,
+				204C66D8206C8E1F00EBB2A8 /* DetailViewController.swift */,
 				208B681E206B16BF009114DB /* Main.storyboard */,
 				208B6821206B16BF009114DB /* Assets.xcassets */,
 				208B6823206B16BF009114DB /* LaunchScreen.storyboard */,
@@ -170,6 +173,7 @@
 				2080181F206B2AC60079EF5A /* Service.swift in Sources */,
 				208B681B206B16BF009114DB /* AppDelegate.swift in Sources */,
 				20A6246D206B1EB20094EC47 /* PlayListCell.swift in Sources */,
+				204C66D9206C8E1F00EBB2A8 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

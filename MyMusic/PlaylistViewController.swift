@@ -12,8 +12,9 @@ class PlaylistViewController: UIViewController {
     
     let searchController = UISearchController(searchResultsController: nil)
     var activityIndicator = UIActivityIndicatorView()
-    let musicList = ["aa","bb","cc","dd"]
+    var songList : [Song] = []
     var filteredList: [Song] = []
+    var selectedSong: Song?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -27,10 +28,13 @@ class PlaylistViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+      getSongs()
         
     }
+
     
     func searchBySong(songName: String) {
+        self.settingUI(true)
         Service.getMusicBySong(songName: songName, success: {(songList: [Song]) in
             DispatchQueue.main.async {
                 self.settingUI(false)
@@ -40,6 +44,22 @@ class PlaylistViewController: UIViewController {
                     self.filteredList = songList
                     self.tableView.reloadData()
                 }
+            }
+        }, failure: {(error) in
+            DispatchQueue.main.async {
+                self.settingUI(false)
+                self.alertError(self, error: error.message)
+            }
+        })
+    }
+    
+    func getSongs() {
+        self.settingUI(true)
+        Service.getSongs(success: {(songList: [Song]) in
+            DispatchQueue.main.async {
+             self.settingUI(false)
+             self.songList = songList
+             self.tableView.reloadData()
             }
         }, failure: {(error) in
             DispatchQueue.main.async {
@@ -93,6 +113,14 @@ class PlaylistViewController: UIViewController {
         return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetailCV" {
+            let destination = segue.destination as! DetailViewController
+            destination.song = self.selectedSong
+            
+        }
+    }
+    
 }
 
 extension PlaylistViewController {
@@ -126,7 +154,7 @@ extension PlaylistViewController: UITableViewDelegate,UITableViewDataSource {
         if isFiltering() {
             return filteredList.count
         }
-        return musicList.count
+        return songList.count
         
     }
     
@@ -136,15 +164,20 @@ extension PlaylistViewController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 44.0
+        return 77.0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "playListCell", for: indexPath) as! PlayListCell
+    
         if isFiltering() {
-            cell.titleLabel.text = filteredList[indexPath.row].trackName
+            let song: Song = filteredList[indexPath.row]
+            cell.songLabel.text = song.trackName
+            cell.artistNameLabel.text = song.artistName
         } else {
-            cell.titleLabel.text = musicList[indexPath.row]
+            let song: Song = songList[indexPath.row]
+            cell.songLabel.text = song.trackName
+            cell.artistNameLabel.text = song.artistName
         }
         
         return cell
@@ -154,7 +187,12 @@ extension PlaylistViewController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+        if isFiltering() {
+             selectedSong = filteredList[indexPath.row]
+        } else {
+             selectedSong = songList[indexPath.row]
+        }
+        performSegue(withIdentifier: "showDetailCV", sender: nil)
     }
     
 }

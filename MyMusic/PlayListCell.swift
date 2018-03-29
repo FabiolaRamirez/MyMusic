@@ -12,9 +12,11 @@ class PlayListCell: UITableViewCell {
     
     
     
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var songLabel: UILabel!
+    @IBOutlet weak var artistNameLabel: UILabel!
+    @IBOutlet weak var artistImageView: UIImageView!
     
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

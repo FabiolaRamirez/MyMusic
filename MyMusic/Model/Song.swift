@@ -16,8 +16,7 @@ struct Song {
     let trackName: String
     let artistId: Int
     let artistName: String
-    let previewUrl: String
-    let artworkUrl60: String
+    let artworkUrl100: String
     let trackPrice: String
     let collectionId: Int
     let collectionName: String
@@ -29,8 +28,7 @@ struct Song {
         self.trackName = dictionary["trackName"] as? String ?? ""
         self.artistId = dictionary["artistId"] as? Int ?? 0
         self.artistName = dictionary["artistName"] as? String ?? ""
-        self.previewUrl = dictionary["previewUrl"] as? String ?? ""
-        self.artworkUrl60 = dictionary["artworkUrl60"] as? String ?? ""
+        self.artworkUrl100 = dictionary["artworkUrl100"] as? String ?? ""
         self.trackPrice = dictionary["trackPrice"] as? String ?? ""
         self.collectionId =  dictionary["collectionId"] as? Int ?? 0
         self.collectionName = dictionary["collectionName"] as? String ?? ""
