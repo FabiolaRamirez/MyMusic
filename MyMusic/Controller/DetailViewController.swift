@@ -27,37 +27,30 @@ class DetailViewController: UIViewController {
     
     
     func setData() {
-        self.songLabel.text = song?.trackName
-        self.artistLabel.text = song?.artistName
-        self.collectionLabel.text = song?.collectionName
-        let date = self.convertToDate((song?.releaseDate)!)
-        self.dateLabel.text = formatForShow(date)
+        songLabel.text = song?.trackName
+        artistLabel.text = song?.artistName
+        collectionLabel.text = song?.collectionName
+        let date = Util.convertToDate((song?.releaseDate)!)
+        dateLabel.text = Util.formatForShow(date)
         getImage(url: (song?.artworkUrl100)!)
     }
     
-    func convertToDate(_ input: String) -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale!
-        let date = dateFormatter.date(from: input)!
-        return date
-    }
-    
-    func formatForShow(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM dd, yyyy"
-        return dateFormatter.string(from: date)
-    }
     
     func getImage(url: String) {
+        //show activity indicator
         settingUI(true)
         Service.downloadImage(url: url, success: {(data: Data) in
             DispatchQueue.main.async {
+                //hide activity indicator
                 self.settingUI(false)
                 self.artistImageView.image = UIImage(data: data as Data)
             }
-        }, failure: {() in
-            self.settingUI(false)
+        }, failure: {(error) in
+            DispatchQueue.main.async {
+                //hide activity indicator
+                 self.settingUI(false)
+                 self.alertError(self, error: error.message)
+            }
         })
     }
     
@@ -74,13 +67,22 @@ extension DetailViewController {
             activityIndicator.startAnimating()
             activityIndicator.isHidden = false
         } else{
-            DispatchQueue.main.async {
-                self.activityIndicator.stopAnimating()
-                self.activityIndicator.isHidden = true
-            }
+            activityIndicator.stopAnimating()
+            activityIndicator.isHidden = true
         }
         
     }
+    
+    
+    func alertError(_ controller: UIViewController, error: String) {
+        let AlertController = UIAlertController(title: "", message: error, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.cancel) {
+            action in AlertController.dismiss(animated: true, completion: nil)
+        }
+        AlertController.addAction(cancelAction)
+        controller.present(AlertController, animated: true, completion: nil)
+    }
+    
     
     func alert(_ controller: UIViewController, message: String) {
         let AlertController = UIAlertController(title: "", message: message, preferredStyle: .alert)

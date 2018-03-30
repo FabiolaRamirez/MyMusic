@@ -33,7 +33,7 @@ class PlaylistViewController: UIViewController {
     }
     
     func searchBySong(songName: String) {
-        self.settingUI(true)
+        settingUI(true)
         Service.getMusicBySong(songName: songName, success: {(songList: [Song]) in
             DispatchQueue.main.async {
                 self.settingUI(false)
@@ -54,7 +54,7 @@ class PlaylistViewController: UIViewController {
     }
     
     func getSongs() {
-        self.settingUI(true)
+        settingUI(true)
         Service.getSongs(success: {(songList: [Song]) in
             DispatchQueue.main.async {
                 self.settingUI(false)
@@ -149,10 +149,8 @@ extension PlaylistViewController {
             activityIndicator.startAnimating()
             activityIndicator.isHidden = false
         } else{
-            DispatchQueue.main.async {
-                self.activityIndicator.stopAnimating()
-                self.activityIndicator.isHidden = true
-            }
+            activityIndicator.stopAnimating()
+            activityIndicator.isHidden = true
         }
         
     }
@@ -168,9 +166,6 @@ extension PlaylistViewController: UITableViewDelegate,UITableViewDataSource {
         
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         

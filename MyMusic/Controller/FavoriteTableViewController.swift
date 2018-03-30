@@ -52,8 +52,8 @@ class FavoriteTableViewController: UITableViewController {
         let song = songsList[indexPath.row]
         cell.songLabel.text = song.trackName
         cell.artistLabel.text = song.artistName
-        let date = self.convertToDate(song.releaseDate)
-        cell.dateLabel.text = formatForShow(date)
+        let date = Util.convertToDate(song.releaseDate)
+        cell.dateLabel.text = Util.formatForShow(date)
         cell.collectionLabel.text = song.collectionName
         cell.url = song.trackViewUrl
         cell.viewController = self
@@ -63,7 +63,10 @@ class FavoriteTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 cell.artistImageView.image = UIImage(data: data as Data)
             }
-        }, failure: {() in
+        }, failure: {(error) in
+            DispatchQueue.main.async {
+                self.alertError(self, error: error.message)
+            }
         })
         
         return cell
@@ -90,19 +93,19 @@ class FavoriteTableViewController: UITableViewController {
         }    
     }
     
-    func convertToDate(_ input: String) -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale!
-        let date = dateFormatter.date(from: input)!
-        return date
+}
+
+extension FavoriteTableViewController {
+    
+    func alertError(_ controller: UIViewController, error: String) {
+        let AlertController = UIAlertController(title: "", message: error, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.cancel) {
+            action in AlertController.dismiss(animated: true, completion: nil)
+        }
+        AlertController.addAction(cancelAction)
+        controller.present(AlertController, animated: true, completion: nil)
     }
     
-    func formatForShow(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM dd, yyyy"
-        return dateFormatter.string(from: date)
-    }
     
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2032404B206ECE46002A13A2 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2032404A206ECE46002A13A2 /* Util.swift */; };
 		204C66D9206C8E1F00EBB2A8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204C66D8206C8E1F00EBB2A8 /* DetailViewController.swift */; };
 		2080181F206B2AC60079EF5A /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2080181E206B2AC60079EF5A /* Service.swift */; };
 		20801821206B2DE40079EF5A /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20801820206B2DE40079EF5A /* ErrorResponse.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2032404A206ECE46002A13A2 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		204C66D8206C8E1F00EBB2A8 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2080181E206B2AC60079EF5A /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		20801820206B2DE40079EF5A /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				208B6821206B16BF009114DB /* Assets.xcassets */,
 				208B6823206B16BF009114DB /* LaunchScreen.storyboard */,
 				208B6826206B16BF009114DB /* Info.plist */,
+				2032404A206ECE46002A13A2 /* Util.swift */,
 			);
 			path = MyMusic;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				208B681D206B16BF009114DB /* PlaylistViewController.swift in Sources */,
 				9AFEBF77206D7616009ECF96 /* FavoriteCell.swift in Sources */,
 				9AFEBF72206D6555009ECF96 /* SongR.swift in Sources */,
+				2032404B206ECE46002A13A2 /* Util.swift in Sources */,
 				2080181F206B2AC60079EF5A /* Service.swift in Sources */,
 				208B681B206B16BF009114DB /* AppDelegate.swift in Sources */,
 				20A6246D206B1EB20094EC47 /* PlayListCell.swift in Sources */,

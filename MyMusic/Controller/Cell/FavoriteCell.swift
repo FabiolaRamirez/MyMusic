@@ -19,7 +19,8 @@ class FavoriteCell: UITableViewCell {
     @IBOutlet weak var shareButton: UIButton!
     var url: String!
     var viewController: FavoriteTableViewController!
-
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

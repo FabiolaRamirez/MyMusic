@@ -126,12 +126,14 @@ class Service {
     }
     
     
-    static func downloadImage(url: String, success: @escaping(_ data: Data) -> (), failure: @escaping()-> ()){
+    static func downloadImage(url: String, success: @escaping(_ data: Data) -> (), failure: @escaping(_ errorResponse: ErrorResponse)-> ()){
         URLSession.shared.dataTask(with: URL(string: url)!) { (data, response, error) in
             if error == nil {
                 success(data!)
             } else {
                 print("Error: \(String(describing: error))")
+                let e = ErrorResponse(message: "\(String(describing: error))")
+                failure(e)
             }
             
             }
