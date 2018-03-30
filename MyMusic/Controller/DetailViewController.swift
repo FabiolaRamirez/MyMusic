@@ -49,7 +49,7 @@ class DetailViewController: UIViewController {
             DispatchQueue.main.async {
                 //hide activity indicator
                  self.settingUI(false)
-                 self.alertError(self, error: error.message)
+                 self.alertMessage(self, message: error.message)
             }
         })
     }
@@ -74,8 +74,8 @@ extension DetailViewController {
     }
     
     
-    func alertError(_ controller: UIViewController, error: String) {
-        let AlertController = UIAlertController(title: "", message: error, preferredStyle: .alert)
+    func alertMessage(_ controller: UIViewController, message: String) {
+        let AlertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.cancel) {
             action in AlertController.dismiss(animated: true, completion: nil)
         }
@@ -89,8 +89,11 @@ extension DetailViewController {
         
         let okAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.default) {
             action in AlertController.dismiss(animated: true, completion: nil)
-            //save to database
-            self.saveSong(self.song!)
+            if self.exist(self.song!) {
+               self.alertMessage(self, message: "This Song Is Already Kept!")
+            } else {
+               self.saveSong(self.song!)
+            }
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
@@ -118,6 +121,12 @@ extension DetailViewController {
         songR.releaseDate = song.releaseDate
         songR.trackViewUrl = song.trackViewUrl
         Database.saveSong(songR)
+    }
+    
+    func exist(_ song: Song) -> Bool {
+        let songR = SongR()
+        songR.trackId = song.trackId
+        return Database.exist(songR)
     }
     
 }

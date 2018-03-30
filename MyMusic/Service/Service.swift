@@ -132,7 +132,7 @@ class Service {
                 success(data!)
             } else {
                 print("Error: \(String(describing: error))")
-                let e = ErrorResponse(message: "\(String(describing: error))")
+                let e = ErrorResponse(message: "Image Unable To Be Donwloaded. There is no Internet connection \(String(describing: error))")
                 failure(e)
             }
             

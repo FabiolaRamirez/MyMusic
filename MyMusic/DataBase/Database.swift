@@ -36,4 +36,13 @@ class Database {
         return Array(songs)
     }
     
+    static func exist(_ song: SongR) -> Bool {
+        let realm = try! Realm()
+        if realm.object(ofType: SongR.self, forPrimaryKey: song.trackId) != nil {
+            return true
+        } else {
+            return false
+        }
+    }
+    
 }
