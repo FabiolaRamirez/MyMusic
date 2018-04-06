@@ -63,9 +63,9 @@ class FavoriteTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 cell.artistImageView.image = UIImage(data: data as Data)
             }
-        }, failure: {(error) in
+        }, failure: {(message: ErrorMessage) in
             DispatchQueue.main.async {
-                self.alertError(self, error: error.message)
+                self.alertError(self, error: message.rawValue)
             }
         })
         
@@ -92,20 +92,6 @@ class FavoriteTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    
-}
-
-extension FavoriteTableViewController {
-    
-    func alertError(_ controller: UIViewController, error: String) {
-        let AlertController = UIAlertController(title: "", message: error, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.cancel) {
-            action in AlertController.dismiss(animated: true, completion: nil)
-        }
-        AlertController.addAction(cancelAction)
-        controller.present(AlertController, animated: true, completion: nil)
-    }
-    
     
 }
 

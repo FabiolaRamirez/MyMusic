@@ -8,8 +8,16 @@
 
 import Foundation
 
-struct Util {
+enum ErrorMessage: String {
+    case noConnection = "Looks like you have an unstable network, please try again later"
+    case statusCode = "Your Request Returned A Status Code Other Than 2.."
+    case noFound = "No Data Was Returned By The Request!"
+    case unableToParse = "Could not Parse The Data As JSON"
+    case unableToConvert = "Can not convert as a Dictionary"
+    case noKeyFound = "Cannot find Key Results In parsedResult"
+}
 
+struct Util {
     
     static func convertToDate(_ input: String) -> Date {
         let dateFormatter = DateFormatter()
@@ -24,7 +32,10 @@ struct Util {
         dateFormatter.dateFormat = "MMMM dd, yyyy"
         return dateFormatter.string(from: date)
     }
-    
-    
-    
+
 }
+
+
+
+
+

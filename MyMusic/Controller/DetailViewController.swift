@@ -45,11 +45,11 @@ class DetailViewController: UIViewController {
                 self.settingUI(false)
                 self.artistImageView.image = UIImage(data: data as Data)
             }
-        }, failure: {(error) in
+        }, failure: {(message: ErrorMessage) in
             DispatchQueue.main.async {
                 //hide activity indicator
                  self.settingUI(false)
-                 self.alertMessage(self, message: error.message)
+                 self.alertMessage(self, message: message.rawValue)
             }
         })
     }
@@ -75,20 +75,20 @@ extension DetailViewController {
     
     
     func alertMessage(_ controller: UIViewController, message: String) {
-        let AlertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.cancel) {
-            action in AlertController.dismiss(animated: true, completion: nil)
+            action in alertController.dismiss(animated: true, completion: nil)
         }
-        AlertController.addAction(cancelAction)
-        controller.present(AlertController, animated: true, completion: nil)
+        alertController.addAction(cancelAction)
+        controller.present(alertController, animated: true, completion: nil)
     }
     
     
     func alert(_ controller: UIViewController, message: String) {
-        let AlertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.default) {
-            action in AlertController.dismiss(animated: true, completion: nil)
+            action in alertController.dismiss(animated: true, completion: nil)
             if self.exist(self.song!) {
                self.alertMessage(self, message: "This Song Is Already Kept!")
             } else {
@@ -97,12 +97,12 @@ extension DetailViewController {
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
-            action in AlertController.dismiss(animated: true, completion: nil)
+            action in alertController.dismiss(animated: true, completion: nil)
         }
         
-        AlertController.addAction(okAction)
-        AlertController.addAction(cancelAction)
-        controller.present(AlertController, animated: true, completion: nil)
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        controller.present(alertController, animated: true, completion: nil)
     }
 }
 

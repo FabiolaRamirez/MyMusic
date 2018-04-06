@@ -45,10 +45,10 @@ class PlaylistViewController: UIViewController {
                     self.tableView.reloadData()
                 }
             }
-        }, failure: {(error) in
+        }, failure: {(messaje: ErrorMessage) in
             DispatchQueue.main.async {
                 self.settingUI(false)
-                self.alertError(self, error: error.message)
+                self.alertError(self, error: messaje.rawValue)
             }
         })
     }
@@ -62,10 +62,10 @@ class PlaylistViewController: UIViewController {
                 self.data = self.songList
                 self.tableView.reloadData()
             }
-        }, failure: {(error) in
+        }, failure: {(messaje: ErrorMessage) in
             DispatchQueue.main.async {
                 self.settingUI(false)
-                self.alertError(self, error: error.message)
+                self.alertError(self, error: messaje.rawValue)
             }
         })
     }
@@ -135,15 +135,6 @@ class PlaylistViewController: UIViewController {
 
 extension PlaylistViewController {
     
-    func alertError(_ controller: UIViewController, error: String) {
-        let AlertController = UIAlertController(title: "", message: error, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.cancel) {
-            action in AlertController.dismiss(animated: true, completion: nil)
-        }
-        AlertController.addAction(cancelAction)
-        controller.present(AlertController, animated: true, completion: nil)
-    }
-    
     func settingUI(_ value: Bool){
         if value{
             activityIndicator.startAnimating()
@@ -153,6 +144,18 @@ extension PlaylistViewController {
             activityIndicator.isHidden = true
         }
         
+    }
+}
+
+extension UIViewController {
+    
+    func alertError(_ controller: UIViewController, error: String) {
+        let alertController = UIAlertController(title: "", message: error, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.cancel) {
+            action in alertController.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(cancelAction)
+        controller.present(alertController, animated: true, completion: nil)
     }
 }
 
