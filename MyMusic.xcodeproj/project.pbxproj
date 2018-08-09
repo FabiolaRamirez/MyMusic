@@ -178,7 +178,6 @@
 				208B6814206B16BF009114DB /* Frameworks */,
 				208B6815206B16BF009114DB /* Resources */,
 				6769181322D510BBCEB6DD0B /* [CP] Embed Pods Frameworks */,
-				CE363F43CE4C84380E9DF976 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -255,21 +254,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyMusic/Pods-MyMusic-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CE363F43CE4C84380E9DF976 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyMusic/Pods-MyMusic-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F95E42F5DCACC21FF139609D /* [CP] Check Pods Manifest.lock */ = {

@@ -10,7 +10,7 @@ import Foundation
 
 import MapKit
 
-struct Song {
+class Song: NSObject {
     
     let trackId: Int
     let trackName: String
@@ -33,4 +33,8 @@ struct Song {
         self.trackViewUrl = dictionary["trackViewUrl"] as? String ?? ""
     }
     
+    
+    deinit {
+        print("The music\(trackName) was deallocated")
+    }
 }

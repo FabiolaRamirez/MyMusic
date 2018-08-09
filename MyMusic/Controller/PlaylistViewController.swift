@@ -34,7 +34,7 @@ class PlaylistViewController: UIViewController {
     
     func searchBySong(songName: String) {
         settingUI(true)
-        Service.getMusicBySong(songName: songName, success: {(songList: [Song]) in
+        Service.sharedInstance.getMusicBySong(songName: songName, success: {(songList: [Song]) in
             DispatchQueue.main.async {
                 self.settingUI(false)
                 if songList.count == 0 {
@@ -55,7 +55,7 @@ class PlaylistViewController: UIViewController {
     
     func getSongs() {
         settingUI(true)
-        Service.getSongs(success: {(songList: [Song]) in
+        Service.sharedInstance.getSongs(success: {(songList: [Song]) in
             DispatchQueue.main.async {
                 self.settingUI(false)
                 self.songList = songList

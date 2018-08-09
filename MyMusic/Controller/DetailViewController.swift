@@ -39,7 +39,7 @@ class DetailViewController: UIViewController {
     func getImage(url: String) {
         //show activity indicator
         settingUI(true)
-        Service.downloadImage(url: url, success: {(data: Data) in
+        Service.sharedInstance.downloadImage(url: url, success: {(data: Data) in
             DispatchQueue.main.async {
                 //hide activity indicator
                 self.settingUI(false)

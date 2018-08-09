@@ -59,7 +59,7 @@ class FavoriteTableViewController: UITableViewController {
         cell.viewController = self
         
         //donwload image
-        Service.downloadImage(url: song.artworkUrl100, success: {(data: Data) in
+        Service.sharedInstance.downloadImage(url: song.artworkUrl100, success: {(data: Data) in
             DispatchQueue.main.async {
                 cell.artistImageView.image = UIImage(data: data as Data)
             }

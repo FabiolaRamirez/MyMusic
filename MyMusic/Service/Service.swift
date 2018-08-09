@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 
-class Service {
+struct Service {
     
-    
-    static func getMusicBySong(songName: String, success: @escaping(_ songList: [Song]) -> (), failure: @escaping(_ errorResponse: ErrorMessage)-> ()){
+    static let sharedInstance = Service()
+     func getMusicBySong(songName: String, success: @escaping(_ songList: [Song]) -> (), failure: @escaping(_ errorResponse: ErrorMessage)-> ()){
         
         let request = NSMutableURLRequest(url: NSURL(string: "https://itunes.apple.com/search?term=\(songName)")! as URL)
         let session = URLSession.shared
@@ -62,7 +62,7 @@ class Service {
         
     }
     
-    static func getSongs(success: @escaping(_ songList: [Song]) -> (), failure: @escaping(_ errorResponse: ErrorMessage)-> ()){
+     func getSongs(success: @escaping(_ songList: [Song]) -> (), failure: @escaping(_ errorResponse: ErrorMessage)-> ()){
         
         let request = NSMutableURLRequest(url: NSURL(string: "https://itunes.apple.com/search?term=*&entity=song")! as URL)
         let session = URLSession.shared
@@ -113,7 +113,7 @@ class Service {
     }
     
     
-    static func downloadImage(url: String, success: @escaping(_ data: Data) -> (), failure: @escaping(_ errorResponse: ErrorMessage)-> ()){
+     func downloadImage(url: String, success: @escaping(_ data: Data) -> (), failure: @escaping(_ errorResponse: ErrorMessage)-> ()){
         URLSession.shared.dataTask(with: URL(string: url)!) { (data, response, error) in
             if error == nil {
                 success(data!)
