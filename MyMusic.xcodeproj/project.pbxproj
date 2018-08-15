@@ -18,6 +18,9 @@
 		208B6822206B16BF009114DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 208B6821206B16BF009114DB /* Assets.xcassets */; };
 		208B6825206B16BF009114DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 208B6823206B16BF009114DB /* LaunchScreen.storyboard */; };
 		20A6246D206B1EB20094EC47 /* PlayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A6246C206B1EB20094EC47 /* PlayListCell.swift */; };
+		9A749E312124B96700B07B30 /* MyMusic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A749E2F2124B96700B07B30 /* MyMusic.xcdatamodeld */; };
+		9A749E5C2124C93400B07B30 /* SongCR+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A749E5A2124C93400B07B30 /* SongCR+CoreDataClass.swift */; };
+		9A749E5D2124C93400B07B30 /* SongCR+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A749E5B2124C93400B07B30 /* SongCR+CoreDataProperties.swift */; };
 		9AFEBF6C206D37EE009ECF96 /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFEBF6B206D37EE009ECF96 /* FavoriteTableViewController.swift */; };
 		9AFEBF6D206D480D009ECF96 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFEBF6E206D480D009ECF96 /* RealmSwift.framework */; };
 		9AFEBF6F206D4814009ECF96 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFEBF70206D4814009ECF96 /* Realm.framework */; };
@@ -42,6 +45,9 @@
 		208B6826206B16BF009114DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20A6246C206B1EB20094EC47 /* PlayListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListCell.swift; sourceTree = "<group>"; };
 		63B5539242060B1F5471FCC0 /* Pods-MyMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMusic.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyMusic/Pods-MyMusic.release.xcconfig"; sourceTree = "<group>"; };
+		9A749E302124B96700B07B30 /* MyMusic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyMusic.xcdatamodel; sourceTree = "<group>"; };
+		9A749E5A2124C93400B07B30 /* SongCR+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SongCR+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9A749E5B2124C93400B07B30 /* SongCR+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SongCR+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9AFEBF6B206D37EE009ECF96 /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
 		9AFEBF6E206D480D009ECF96 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AFEBF70206D4814009ECF96 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +150,9 @@
 			children = (
 				9AFEBF71206D6555009ECF96 /* SongR.swift */,
 				9AFEBF74206D68F6009ECF96 /* Database.swift */,
+				9A749E5A2124C93400B07B30 /* SongCR+CoreDataClass.swift */,
+				9A749E5B2124C93400B07B30 /* SongCR+CoreDataProperties.swift */,
+				9A749E2F2124B96700B07B30 /* MyMusic.xcdatamodeld */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -282,12 +291,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AFEBF75206D68F6009ECF96 /* Database.swift in Sources */,
+				9A749E5D2124C93400B07B30 /* SongCR+CoreDataProperties.swift in Sources */,
 				20801825206B34B50079EF5A /* Song.swift in Sources */,
 				9AFEBF6C206D37EE009ECF96 /* FavoriteTableViewController.swift in Sources */,
 				20801821206B2DE40079EF5A /* ErrorResponse.swift in Sources */,
 				208B681D206B16BF009114DB /* PlaylistViewController.swift in Sources */,
 				9AFEBF77206D7616009ECF96 /* FavoriteCell.swift in Sources */,
 				9AFEBF72206D6555009ECF96 /* SongR.swift in Sources */,
+				9A749E5C2124C93400B07B30 /* SongCR+CoreDataClass.swift in Sources */,
+				9A749E312124B96700B07B30 /* MyMusic.xcdatamodeld in Sources */,
 				2032404B206ECE46002A13A2 /* Util.swift in Sources */,
 				2080181F206B2AC60079EF5A /* Service.swift in Sources */,
 				208B681B206B16BF009114DB /* AppDelegate.swift in Sources */,
@@ -433,7 +445,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BR26Z7K4HT;
 				INFOPLIST_FILE = MyMusic/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fabiolaramirez.MyMusic1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -450,7 +462,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BR26Z7K4HT;
 				INFOPLIST_FILE = MyMusic/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fabiolaramirez.MyMusic1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -481,6 +493,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9A749E2F2124B96700B07B30 /* MyMusic.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9A749E302124B96700B07B30 /* MyMusic.xcdatamodel */,
+			);
+			currentVersion = 9A749E302124B96700B07B30 /* MyMusic.xcdatamodel */;
+			path = MyMusic.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 208B680F206B16BF009114DB /* Project object */;
 }

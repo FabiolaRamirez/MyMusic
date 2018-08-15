@@ -19,6 +19,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var song: Song?
+    private var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,6 +122,11 @@ extension DetailViewController {
         songR.releaseDate = song.releaseDate
         songR.trackViewUrl = song.trackViewUrl
         Database.saveSong(songR)
+        let songCR = SongCR(entity: SongCR.entity(), insertInto: context)
+        songCR.trackId = Int32(song.trackId)
+        
+        
+        
     }
     
     func exist(_ song: Song) -> Bool {

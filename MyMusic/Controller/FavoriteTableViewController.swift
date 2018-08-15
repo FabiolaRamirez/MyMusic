@@ -7,19 +7,28 @@
 //
 
 import UIKit
+import CoreData
 
 class FavoriteTableViewController: UITableViewController {
     
-    var songsList: [SongR] = []
+    var songsList: [SongCR] = []
     var urliTunesSong: String!
+    private var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         settingUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        self.songsList = Database.fetchSongs()
+        super.viewWillAppear(animated)
+        //self.songsList = Database.fetchSongs()
+        do {
+            songsList = try context.fetch(SongCR.fetchRequest())
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
         self.tableView.reloadData()
     }
     
@@ -52,14 +61,14 @@ class FavoriteTableViewController: UITableViewController {
         let song = songsList[indexPath.row]
         cell.songLabel.text = song.trackName
         cell.artistLabel.text = song.artistName
-        let date = Util.convertToDate(song.releaseDate)
+        let date = Util.convertToDate(song.releaseDate!)
         cell.dateLabel.text = Util.formatForShow(date)
         cell.collectionLabel.text = song.collectionName
         cell.url = song.trackViewUrl
         cell.viewController = self
         
         //donwload image
-        Service.sharedInstance.downloadImage(url: song.artworkUrl100, success: {(data: Data) in
+        Service.sharedInstance.downloadImage(url: song.artworkUrl100!, success: {(data: Data) in
             DispatchQueue.main.async {
                 cell.artistImageView.image = UIImage(data: data as Data)
             }
@@ -83,9 +92,14 @@ class FavoriteTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             //tableView.deleteRows(at: [indexPath], with: .fade)
-            let songR: SongR = songsList[indexPath.row]
-            deleteSong(songR)
-            self.songsList = Database.fetchSongs()
+            let songCR: SongCR = songsList[indexPath.row]
+            //A L E R T !! REPLACE!
+            //deleteSong(songCR)
+            do {
+                songsList = try context.fetch(SongCR.fetchRequest())
+            } catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
+            }
             self.tableView.reloadData()
             
         } else if editingStyle == .insert {
