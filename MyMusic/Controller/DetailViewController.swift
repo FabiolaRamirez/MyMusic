@@ -19,6 +19,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var song: Song?
+    private var appDelegate = UIApplication.shared.delegate as! AppDelegate
     private var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
@@ -90,11 +91,11 @@ extension DetailViewController {
         
         let okAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.default) {
             action in alertController.dismiss(animated: true, completion: nil)
-            if self.exist(self.song!) {
+            /*if self.exist(self.song!) {
                self.alertMessage(self, message: "This Song Is Already Kept!")
-            } else {
+            } else {*/
                self.saveSong(self.song!)
-            }
+            //}
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
@@ -112,7 +113,7 @@ extension DetailViewController {
 extension DetailViewController {
     
     func saveSong(_ song: Song) {
-        let songR = SongR()
+        /*let songR = SongR()
         songR.trackId = song.trackId
         songR.trackName = song.trackName
         songR.artistId = song.artistId
@@ -121,10 +122,20 @@ extension DetailViewController {
         songR.collectionName = song.collectionName
         songR.releaseDate = song.releaseDate
         songR.trackViewUrl = song.trackViewUrl
-        Database.saveSong(songR)
+        Database.saveSong(songR)*/
+        
+        //CoreData
         let songCR = SongCR(entity: SongCR.entity(), insertInto: context)
         songCR.trackId = Int32(song.trackId)
-        
+        songCR.trackName = song.trackName
+        songCR.artistId = Int32(song.artistId)
+        songCR.artistName = song.artistName
+        songCR.artworkUrl100 = song.artworkUrl100
+        songCR.collectionName = song.collectionName
+        songCR.releaseDate = song.releaseDate
+        songCR.trackViewUrl = song.trackViewUrl
+        appDelegate.saveContext()
+        //songList.apped(songCR)
         
         
     }

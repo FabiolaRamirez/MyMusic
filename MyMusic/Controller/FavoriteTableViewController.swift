@@ -93,8 +93,7 @@ class FavoriteTableViewController: UITableViewController {
             // Delete the row from the data source
             //tableView.deleteRows(at: [indexPath], with: .fade)
             let songCR: SongCR = songsList[indexPath.row]
-            //A L E R T !! REPLACE!
-            //deleteSong(songCR)
+            deleteSong(songCR)
             do {
                 songsList = try context.fetch(SongCR.fetchRequest())
             } catch let error as NSError {
@@ -112,8 +111,9 @@ class FavoriteTableViewController: UITableViewController {
 // MARK: Methods for Darabase
 extension FavoriteTableViewController {
     
-    func deleteSong(_ songR: SongR) {
-        Database.deleteSong(songR)
+    func deleteSong(_ songCR: SongCR) {
+        //Database.deleteSong(songR)
+        context.delete(songCR)
     }
     
 }
